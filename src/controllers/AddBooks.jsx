@@ -74,7 +74,7 @@ export default function AddBooks() {
       {message && <div className="message">{message}</div>}
 
       <form className="book-form" onSubmit={handleSubmit}>
-        <h2>Yangi kitob qo'shish</h2>
+        <h2>Add new Book</h2>
 
         <input
           type="number"
