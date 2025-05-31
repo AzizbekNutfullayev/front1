@@ -70,11 +70,11 @@ export default function AddBooks() {
 
   return (
     <div className="home-container">
-      <h1>Kitoblar ro'yxati</h1>
+      <h1>Kitoblar Olamoi</h1>
       {message && <div className="message">{message}</div>}
 
       <form className="book-form" onSubmit={handleSubmit}>
-        <h2>Add new Book</h2>
+        <h2>Kitob qo'shing</h2>
 
         <input
           type="number"
