@@ -14,7 +14,6 @@ export default function AddBooks() {
   });
   const [message, setMessage] = useState('');
 
-  // GET: Kitoblar ro'yxatini olish
   const fetchBooks = async () => {
     try {
       const res = await axios.get('https://becend-1.onrender.com/bo');
@@ -29,7 +28,6 @@ export default function AddBooks() {
     fetchBooks();
   }, []);
 
-  // Input o'zgarishi
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData(prev => ({
@@ -38,7 +36,6 @@ export default function AddBooks() {
     }));
   };
 
-  // POST: Yangi kitob qo'shish
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -116,13 +113,6 @@ export default function AddBooks() {
           min="1000"
           max={new Date().getFullYear()}
         />
-          <input
-            type="text"
-            name="image_url"
-            placeholder="Rasm URL"
-            value={formData.image_url}
-            onChange={handleChange}
-          />
         <label>
           <input
             type="checkbox"
