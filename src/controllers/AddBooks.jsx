@@ -120,7 +120,7 @@ export default function AddBooks() {
             checked={formData.available}
             onChange={handleChange}
           />
-          Mavjud
+          bor
         </label>
         <button type="submit">Qo'shish</button>
       </form>
