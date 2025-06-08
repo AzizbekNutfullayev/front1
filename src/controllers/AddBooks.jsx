@@ -23,6 +23,17 @@ export default function AddBooks() {
       setMessage('Kitoblarni olishda xatolik yuz berdi.');
     }
   };
+  const handleDelete = async (bookId) => {
+    try {
+      await axios.delete(`https://becend-1.onrender.com/bo/${bookId}`);
+      setMessage('Kitob o‘chirildi');
+      fetchBooks(); // ro‘yxatni yangilash
+    } catch (error) {
+      console.error('O‘chirishda xatolik:', error);
+      setMessage('Kitobni o‘chirishda xatolik yuz berdi.');
+    }
+  };
+  
 
   useEffect(() => {
     fetchBooks();
@@ -69,10 +80,10 @@ export default function AddBooks() {
     <div className="home-container">
       <h1>Kitoblar Olamoi</h1>
       {message && <div className="message">{message}</div>}
-
+  
       <form className="book-form" onSubmit={handleSubmit}>
         <h2>Kitob qo'shing</h2>
-
+  
         <input
           type="number"
           name="book_id"
@@ -124,7 +135,7 @@ export default function AddBooks() {
         </label>
         <button type="submit">Qo'shish</button>
       </form>
-
+  
       <div className="books-list">
         {books.length === 0 ? (
           <p>Kitoblar mavjud emas.</p>
@@ -155,10 +166,25 @@ export default function AddBooks() {
               <p><strong>Janr:</strong> {book.genre || 'Noma\'lum'}</p>
               <p><strong>Chop yili:</strong> {book.published_year || 'Noma\'lum'}</p>
               <p><strong>Mavjud:</strong> {book.available ? 'Ha' : 'Yo‘q'}</p>
+  
+              <button
+                onClick={() => handleDelete(book.book_id)}
+                style={{
+                  marginTop: '10px',
+                  padding: '6px 12px',
+                  backgroundColor: '#dc3545',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '4px',
+                  cursor: 'pointer'
+                }}
+              >
+                O‘chirish
+              </button>
             </div>
           ))
         )}
       </div>
     </div>
-  );
+  );  
 }
