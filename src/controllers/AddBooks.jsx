@@ -27,14 +27,12 @@ export default function AddBooks() {
     try {
       await axios.delete(`https://becend-1.onrender.com/bo/${bookId}`);
       setMessage('Kitob o‘chirildi');
-      fetchBooks(); // ro‘yxatni yangilash
+      fetchBooks();
     } catch (error) {
       console.error('O‘chirishda xatolik:', error);
       setMessage('Kitobni o‘chirishda xatolik yuz berdi.');
     }
   };
-  
-
   useEffect(() => {
     fetchBooks();
   }, []);
@@ -46,7 +44,6 @@ export default function AddBooks() {
       [name]: type === 'checkbox' ? checked : value,
     }));
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -56,7 +53,6 @@ export default function AddBooks() {
       published_year: formData.published_year ? Number(formData.published_year) : null,
       available: Boolean(formData.available),
     };
-
     try {
       await axios.post('https://becend-1.onrender.com/bo/book', postData);
       setMessage('Kitob muvaffaqiyatli qo\'shildi!');
@@ -75,10 +71,9 @@ export default function AddBooks() {
       setMessage(error.response?.data?.message || 'Xatolik yuz berdi.');
     }
   };
-
-  return (
+  return ( 
     <div className="home-container">
-      <h1>Kitoblar Olamoi</h1>
+      <h1>ljaelfjlsjbgrlrbsgbl</h1>
       {message && <div className="message">{message}</div>}
   
       <form className="book-form" onSubmit={handleSubmit}>
@@ -166,7 +161,6 @@ export default function AddBooks() {
               <p><strong>Janr:</strong> {book.genre || 'Noma\'lum'}</p>
               <p><strong>Chop yili:</strong> {book.published_year || 'Noma\'lum'}</p>
               <p><strong>Mavjud:</strong> {book.available ? 'Ha' : 'Yo‘q'}</p>
-  
               <button
                 onClick={() => handleDelete(book.book_id)}
                 style={{
