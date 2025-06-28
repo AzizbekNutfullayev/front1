@@ -73,7 +73,7 @@ export default function AddBooks() {
   };
   return ( 
     <div className="home-container">
-      <h1>ljaelfjlsjbgrlrbsgbl</h1>
+      <h1>Add book </h1>
       {message && <div className="message">{message}</div>}
   
       <form className="book-form" onSubmit={handleSubmit}>
